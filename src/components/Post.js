@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-class Post extends Component{
+export default class Post extends Component{
     render() {
         const {post} = this.props
         const body = (<section className="card-text">{post.text}}</section>)
@@ -20,5 +20,3 @@ class Post extends Component{
     }
 
 }
-
-export default Post
