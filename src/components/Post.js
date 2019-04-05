@@ -1,8 +1,7 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 
-export default class Post extends Component{
+export default class Post extends PureComponent{
     render() {
-        console.log(post)
         const {post} = this.props
         const body = (<section className="card-text">{post.text}}</section>)
         const create_time = (<section>{new Date(post.created_at).toLocaleString()}</section>)
