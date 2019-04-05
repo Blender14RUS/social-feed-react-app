@@ -3,7 +3,6 @@ import Post from '../Post'
 import './style.css'
 
 export default function PostList( {posts} ) {
-    console.log(posts);
     const postElements = posts.map(post => 
         <li key= {post.id} className="post-list_li">
             <Post post = {post}/>
