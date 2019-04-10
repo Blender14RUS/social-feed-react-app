@@ -15,21 +15,19 @@ const style = {
     }
 }
 export default function Post (props) {
-    const body = props.body;
-    const avatar = props.avatarURL;
     return (
-        <Card style={style.card}>
-            <CardHeader avatar={
-                <Avatar src={avatar} />
+        <Card style = {style.card}>
+            <CardHeader avatar = {
+                <Avatar src = {props.AvatarURL} />
             }
             title={
-                <ItemHeader name={props.name} publicationDate={props.createTime} login={props.login} />
+                <ItemHeader Name = {props.Name} PublicationDate = {props.CreateTime} Login = {props.Login} />
             }
             />
             
             <CardContent>
                 <Typography>
-                    {body}
+                    {props.Body}
                 </Typography>
             </CardContent>
         

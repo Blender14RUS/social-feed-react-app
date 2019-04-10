@@ -6,10 +6,9 @@ const style = {
 }
 
 export default function PostList(props) {
-    console.log(props.posts)
     const postElements = props.posts.map(post => 
         <li key={post.id} style={style}>
-            <Post body={post.text} createTime={post.created_at} name={post.user.name} avatarURL={post.user.profile_image_url} login={post.user.screen_name}/>
+            <Post Body = {post.text} CreateTime = {post.created_at} Name = {post.user.name} AvatarURL = {post.user.profile_image_url} Login = {post.user.screen_name}/>
         </li>
     )
     return (

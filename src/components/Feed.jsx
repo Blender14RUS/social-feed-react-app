@@ -3,15 +3,17 @@ import PostList from './PostList';
 
 export default class Feed extends Component {
     state = { 
-        fakeNowDate: 1512933304,
-        data: [], isLoading: false, error: null 
+            fakeNowDate: 1512933304,
+            count: (this.props.CountOfPost != null ? this.props.CountOfPost  : 10),
+            interval: (this.props.Interval != null ? this.props.Interval  : 10000),
+            data: [], isLoading: false, error: null 
     };
 
-    fetchData = () => {
-        let date = Object.assign({}, this.state.fakeNowDate);
+    fetchData() {
+        let date = Object.assign(this.state.fakeNowDate)
         date += 1000;
-        this.setState({fakeNowDate: date});
-        const url =  (this.props.URL + `?timeframe[finish]=` + this.state.fakeNowDate  + `&limit=` + this.props.CountOfPost);
+        this.setState({fakeNowDate: date.valueOf()});
+        const url = (this.props.URL + `?timeframe[finish]=` + this.state.fakeNowDate  + `&limit=` + this.state.count);
         fetch(url)  
         .then(response => {
             if (response.ok) {
@@ -21,16 +23,17 @@ export default class Feed extends Component {
             }
         })
         .then(result => this.setState({data: result, isLoading: false  }))
-        .catch(error => this.setState({isLoading: false, error }));
+        .catch(error => this.setState({isLoading: false, error }))
     }
 
     componentDidMount () {
-        this.fetchData()
-        this.timer = setInterval(() => {this.fetchData()}, this.props.Interval);
+        this.timeOut = setTimeout(() => {
+            this.fetchData()
+        }, this.state.interval)
     }
 
     componentWillUnmount() {
-        clearInterval(this.timer);
+        clearTimeout(this.timeOut);
     }    
 
     render() { 
