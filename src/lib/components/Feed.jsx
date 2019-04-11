@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PostList from './PostList';
 import FetchData from './FetchData';
 
-
 export default class Feed extends Component {
     state = { 
         fakeNowDate: 1512933304,
@@ -16,7 +15,7 @@ export default class Feed extends Component {
     fetchData() {
         let date = this.state.fakeNowDate;
         date += 1000;
-        this.setState({fakeNowDate: date.valueOf()});
+        this.setState({fakeNowDate: date});
         const fullURL = `${this.props.url}?timeframe[finish]=${this.state.fakeNowDate}&limit=${this.state.count}`;
         FetchData(fullURL, 3)  
         .then(response => {

@@ -1,14 +1,11 @@
 import React from 'react'
 import Post from './Post'
-
-const style = {
-    listStyle: 'none',
-}
+import '../style.css'
 
 export default function PostList(props) {
     const postElements = props.posts.map(post => 
-        <li key={post.id} style={style}>
-            <Post body={post.text} createTime={post.created_at} name={post.user.name} avatarURL={post.user.profile_image_url} login={post.user.screen_name} />
+        <li key={post.id} className="li">
+            <Post {...post} />
         </li>
     )
     return (

@@ -2,40 +2,26 @@ import React from 'react'
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ItemHeader from './ItemHeader'
+import '../style.css'
 
-const style = {
-    card: {
-        margin: '5px',
-    }
-}
 export default function Post(props) {
     return (
-        <Card style={style.card}>
+        <Card className="card">
             <CardHeader avatar={
-                <Avatar src={props.avatarURL} />
+                <Avatar src={props.user.profile_image_url} />
             }
             title={
-                <ItemHeader name={props.name} publicationDate={props.createTime} login={props.login} />
+                <ItemHeader name={props.user.name} publicationDate={props.created_at} login={props.user.screen_name} />
             }
             />
-            
             <CardContent>
                 <Typography>
-                    {props.body}
+                    {props.text}
                 </Typography>
             </CardContent>
-        
-            <CardActions>
-                <IconButton>
-                    <ExpandMoreIcon />
-                </IconButton>
-            </CardActions>
         </Card>
     )
 }
