@@ -1,3 +1,3 @@
 import Feed from "./components/Feed";
 
-export { Feed };
+export {Feed};

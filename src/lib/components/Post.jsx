@@ -16,18 +16,18 @@ const style = {
 }
 export default function Post(props) {
     return (
-        <Card style = { style.card }>
-            <CardHeader avatar = {
-                <Avatar src = { props.AvatarURL } />
+        <Card style={style.card}>
+            <CardHeader avatar={
+                <Avatar src={props.avatarURL} />
             }
             title={
-                <ItemHeader Name = { props.Name } PublicationDate = { props.CreateTime } Login = { props.Login } />
+                <ItemHeader name={props.name} publicationDate={props.createTime} login={props.login} />
             }
             />
             
             <CardContent>
                 <Typography>
-                    { props.Body }
+                    {props.body}
                 </Typography>
             </CardContent>
         
