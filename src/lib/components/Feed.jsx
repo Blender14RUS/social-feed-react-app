@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PostList from './PostList';
+import FetchData from './FetchData';
 
 
 export default class Feed extends Component {
@@ -8,7 +9,7 @@ export default class Feed extends Component {
         count: this.props.countOfPost != null ? this.props.countOfPost  : 10,
         interval: this.props.interval != null ? this.props.interval  : 10000,
         data: [], 
-        isLoading: false, 
+        isLoading: true, 
         error: null 
     };
 
@@ -17,7 +18,7 @@ export default class Feed extends Component {
         date += 1000;
         this.setState({fakeNowDate: date.valueOf()});
         const fullURL = `${this.props.url}?timeframe[finish]=${this.state.fakeNowDate}&limit=${this.state.count}`;
-        fetch(fullURL)  
+        FetchData(fullURL, 3)  
         .then(response => {
             if (response.ok) {
                 return response.json();
@@ -26,8 +27,10 @@ export default class Feed extends Component {
             }
         })
         .then(result => this.setState({data: result, isLoading: false  }))
-        .catch(error => this.setState({isLoading: false, error }));
-        this.timeOut = setTimeout(() => this.fetchData(), this.state.interval)
+        .catch(error => this.setState({isLoading: false, error }))
+        .catch(clearTimeout(this.timeOut));
+        if (this.state.error == null)
+            this.timeOut = setTimeout(() => this.fetchData(), this.state.interval)
     }
 
     componentDidMount () {
