@@ -9,22 +9,22 @@ const spanStyle = {
     color: 'grey',
 }
 
-export default function ItemHeader (props) {
+export default function ItemHeader(props) {
     const time = new Date(props.PublicationDate);
     return (
         <div>
             <span>
                 <strong>
-                    {props.Name}
+                    { props.Name }
                 </strong>
             </span>
             <span>&nbsp;</span>
-            <span style={spanStyle}>
-                @{props.Login}
+            <span style={ spanStyle }>
+                @{ props.Login }
             </span>
             <span>&nbsp;&middot;&nbsp;</span>
-            <small style={spanStyle}>
-                <ReactTimeAgo date = {time}/>
+            <small style={ spanStyle }>
+                <ReactTimeAgo date = { time }/>
             </small>
         </div>
     )

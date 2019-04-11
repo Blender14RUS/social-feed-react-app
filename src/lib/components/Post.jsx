@@ -14,20 +14,20 @@ const style = {
         margin: '5px',
     }
 }
-export default function Post (props) {
+export default function Post(props) {
     return (
-        <Card style = {style.card}>
+        <Card style = { style.card }>
             <CardHeader avatar = {
-                <Avatar src = {props.AvatarURL} />
+                <Avatar src = { props.AvatarURL } />
             }
             title={
-                <ItemHeader Name = {props.Name} PublicationDate = {props.CreateTime} Login = {props.Login} />
+                <ItemHeader Name = { props.Name } PublicationDate = { props.CreateTime } Login = { props.Login } />
             }
             />
             
             <CardContent>
                 <Typography>
-                    {props.Body}
+                    { props.Body }
                 </Typography>
             </CardContent>
         

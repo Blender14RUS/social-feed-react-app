@@ -1,22 +1,35 @@
 {
   "name": "social-feed-react-app",
   "version": "0.1.0",
-  "private": true,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Blender14RUS/social-feed-react-app.git"
+  },
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
     "bootstrap": "^4.3.1",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0",
     "react-time-ago": "^5.0.2"
-  },
-  "devDependencies": {
-    "react-scripts": "1.0.7"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-examples": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build": "rm -rf dist && cross-env NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__"
+  },
+  "devDependencies": {
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "react-scripts": "1.0.7",
+    "babel-cli": "^6.26.0",
+    "cross-env": "^5.2.0",
+    "create-component-lib": "^0.1.6"
   }
 }
