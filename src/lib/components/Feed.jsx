@@ -31,16 +31,7 @@ export default class Feed extends Component {
         this.setState({countsNewPosts: false})
     }
 
-    fetchData() {
-        const fullURL = `${this.props.url}?timeframe[finish]=${this.state.fakeNowDate}&limit=${this.state.count}`;
-        FetchData(fullURL, 3)  
-        .then(response =>  response.json())
-        .then(result => this.setState({data: result, isLoading: false}))
-        .catch(error => this.setState({isLoading: false, error}))
-    }
-
     componentDidMount() {
-        this.fetchData();
         this.fetchNewData();
     }
 
@@ -62,7 +53,7 @@ export default class Feed extends Component {
         return (
             <div>
                 <div onClick={this.handleClick} >
-                    <Counter data={newData} drop={countsNewPosts}/>
+                    <Counter data={newData} drop={countsNewPosts} updatePostsEvent={this.handleClick}/>
                 </div>
                 <PostList posts={data}/>
             </div>
@@ -71,7 +62,6 @@ export default class Feed extends Component {
 
     handleClick = () => {
         this.setState({countsNewPosts: true})
-        this.setState({data: []})
         this.setState({data: this.state.newData})
     }
 }

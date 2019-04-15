@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
+import $ from 'jquery'
 
 export default class Counter extends Component {
     state = {
-        countsNewPosts: -10,
+        countsNewPosts: 0,
     }
 
     componentWillReceiveProps(nextProps) {
@@ -17,6 +18,10 @@ export default class Counter extends Component {
             counts += difference.length;
             this.setState({countsNewPosts: counts})
         }
+    }
+
+    componentDidMount() {
+        this.props.updatePostsEvent();
     }
 
     render() {
