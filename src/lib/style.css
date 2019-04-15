@@ -1,6 +1,6 @@
 
 .li {
-    list-style: none
+    list-style: none;
 }
 
 .card {
@@ -10,4 +10,9 @@
 .span {
     font-size: 14px;
     color: grey;
+}
+
+.badge {
+    margin-top: 20px;   
+    left: 50%;
 }
