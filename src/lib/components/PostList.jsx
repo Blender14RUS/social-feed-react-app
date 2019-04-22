@@ -1,6 +1,5 @@
 import React from 'react'
 import Post from './Post'
-import '../style.css'
 
 export default function PostList(props) {
     const postElements = props.posts.map(post => 
@@ -13,5 +12,4 @@ export default function PostList(props) {
             {postElements}
         </ol>
     )
-    
 }
