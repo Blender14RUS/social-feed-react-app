@@ -7,7 +7,7 @@ export default function Counter(props) {
         <div onClick={props.onClick}>
             <ol>
                 <li className="li">
-                    <Badge className="badge" badgeContent={props.countsNewPosts} color="primary">
+                    <Badge className="badge" badgeContent={props.countsNewPosts} max={10} color="primary">
                         <MailIcon />
                     </Badge>
                 </li>

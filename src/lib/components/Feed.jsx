@@ -23,11 +23,12 @@ export default class Feed extends Component {
         fetchData(fullURL, 3)
             .then(response =>  response.json())
             .then(result => {
+                let newPostsCount = this.state.countsNewPosts + countNewPosts(this.state.newData, result);
                 this.setState({newData: result, isLoading: false});
                 if (this.state.data.length === 0)
                     this.setState({data: result, isLoading: false});
                 else 
-                    this.setState({countsNewPosts: countNewPosts(this.state.data, result)});
+                    this.setState({countsNewPosts: newPostsCount});
             })
             .catch(error => this.setState({isLoading: false, error}))
             .catch(clearTimeout(this.timeOut));
