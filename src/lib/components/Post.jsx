@@ -7,15 +7,17 @@ import Typography from '@material-ui/core/Typography';
 import ItemHeader from './ItemHeader'
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
-import CardActions from '@material-ui/core/CardActions';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import '../style.css'
 
 export default class Post extends Component {
-    state = { expanded: false };
+    state = { 
+        expanded: false,
+    };
+
+    imgURL = this.props.entities.media ? <img className="picture" src={this.props.entities.media[0].media_url} alt="" /> : ''
 
     handleExpandClick = () => {
-        console.log("click");
+        console.log(this.props)
         this.setState(state => ({ expanded: !state.expanded }));
     };
 
@@ -39,17 +41,8 @@ export default class Post extends Component {
                     <Typography>
                         {this.props.text}
                     </Typography>
+                    {this.imgURL}
                 </CardContent>
-                
-                <CardActions disableActionSpacing> 
-                    <IconButton
-                        onClick={this.handleExpandClick}
-                        aria-expanded={false}
-                        aria-label="Show more"
-                    >   
-                        <ExpandMoreIcon />
-                    </IconButton>
-                </CardActions>
             </Card>
         )
     }
